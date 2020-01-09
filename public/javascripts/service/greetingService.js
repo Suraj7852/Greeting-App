@@ -8,10 +8,19 @@ class GreetingService {
             "message": `welcome ${data.firstName} ${data.lastName} to greetingApp`
         };
         model.register(user, (err, result) => {
-            if(err)
+            if (err)
                 callback(err);
             else
-                callback(null,result);
+                callback(null, result);
+        })
+    }
+
+    findService(data, callback) {
+        model.find(data._id, (err, result) => {
+            if (err)
+                callback(err);
+            else
+                callback(null, result);
         })
     }
 }
