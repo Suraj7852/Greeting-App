@@ -30,7 +30,7 @@ class greetingModel {
                 console.error(err);
                 callback(err);
             } else {
-                callback(null, {message: "saves into data base", result})
+                callback(null, {message: "डेटाबेस में सेव हो गया", result})
             }
         });
     }
@@ -41,7 +41,7 @@ class greetingModel {
                 callback(err);
             else {
                 if (result) {
-                    callback(null, result);
+                    callback(null, {result, message: "मैसेज प्राप्त हो गया"});
                 } else
                     callback({message: "Wrong id"});
             }
@@ -56,7 +56,7 @@ class greetingModel {
                 let allMessage = result.map(message => {
                     return message.message;
                 });
-                callback(null, allMessage);
+                callback(null, {result: allMessage, message: "सभी मैसेज मिल गया"});
             }
         })
     }
@@ -66,7 +66,17 @@ class greetingModel {
             if (err)
                 callback(err);
             else {
-                callback(null, result);
+                callback(null, {result, message: "अपडेट हो गया"});
+            }
+        })
+    }
+
+    deleteMessage(data, callback) {
+        GreetingUser.deleteOne(data, (err, result) => {
+            if (err)
+                callback(err);
+            else {
+                callback(null, {result:result, message:"डिलीट हो गया है"});
             }
         })
     }

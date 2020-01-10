@@ -47,6 +47,18 @@ class GreetingService {
                 callback(null, result);
         })
     }
+
+    deleteMessageService(data, callback) {
+        let deleteObj = {
+            _id: data
+        };
+        model.deleteMessage(deleteObj, (err, result) => {
+            if (err)
+                callback(err);
+            else
+                callback(null, result);
+        })
+    }
 }
 
 module.exports = new GreetingService();

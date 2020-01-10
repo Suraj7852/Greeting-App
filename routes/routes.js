@@ -5,4 +5,5 @@ router.post('/register', controller.registerController);
 router.get('/find/:id', controller.findController);
 router.get('/findAll', controller.findAllController);
 router.put('/editMessage/:id', controller.editMessageController);
+router.delete('/deleteMessage/:id', controller.deleteMessageController);
 module.exports = router;
