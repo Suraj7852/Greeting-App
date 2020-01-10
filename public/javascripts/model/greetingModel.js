@@ -48,6 +48,19 @@ class greetingModel {
             }
         })
     }
+
+    findAll(data, callback) {
+        GreetingUser.find({}, (err, result) => {
+            if (err)
+                callback(err);
+            else {
+                let allMessage = result.map(message => {
+                    return message.message;
+                });
+                callback(null, allMessage);
+            }
+        })
+    }
 }
 
 module.exports = new greetingModel();

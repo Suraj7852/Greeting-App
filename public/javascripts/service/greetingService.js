@@ -23,6 +23,15 @@ class GreetingService {
                 callback(null, result);
         })
     }
+
+    findAllService(data, callback) {
+        model.findAll({}, (err, result) => {
+            if (err)
+                callback(err);
+            else
+                callback(null, result);
+        })
+    }
 }
 
 module.exports = new GreetingService();
