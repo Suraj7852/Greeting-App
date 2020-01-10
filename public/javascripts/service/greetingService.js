@@ -32,6 +32,21 @@ class GreetingService {
                 callback(null, result);
         })
     }
+
+    editMessageService(data, callback) {
+        let idField = {
+            _id: data._id
+        };
+        let updateField = {
+            'message': data.message
+        };
+        model.editMessage(idField, updateField, (err, result) => {
+            if (err)
+                callback(err);
+            else
+                callback(null, result);
+        })
+    }
 }
 
 module.exports = new GreetingService();

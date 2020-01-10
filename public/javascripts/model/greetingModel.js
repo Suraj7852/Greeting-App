@@ -37,7 +37,6 @@ class greetingModel {
 
     find(data, callback) {
         GreetingUser.findById(data, (err, result) => {
-            console.log(data)
             if (err)
                 callback(err);
             else {
@@ -58,6 +57,16 @@ class greetingModel {
                     return message.message;
                 });
                 callback(null, allMessage);
+            }
+        })
+    }
+
+    editMessage(idField, updateField, callback) {
+        GreetingUser.updateOne(idField, updateField, (err, result) => {
+            if (err)
+                callback(err);
+            else {
+                callback(null, result);
             }
         })
     }

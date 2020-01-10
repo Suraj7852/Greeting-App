@@ -58,6 +58,27 @@ class GreetingController {
             }
         })
     }
+
+    editMessageController(req, res) {
+        let responseResult = {};
+        let editObj = {
+            _id: req.params.id,
+            message: req.body.message
+        };
+        service.editMessageService(editObj, (err, result) => {
+            if (err) {
+                responseResult.sucess = false;
+                responseResult.message = "Validation Error";
+                responseResult.errors = err;
+                return res.status(422).send(responseResult);
+            } else {
+                responseResult.sucess = true;
+                responseResult.message = "message updated";
+                responseResult.result = result;
+                return res.status(200).send(responseResult);
+            }
+        })
+    }
 }
 
 module.exports = new GreetingController();
