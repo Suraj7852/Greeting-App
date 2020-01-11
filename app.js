@@ -5,10 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const routes = require('./routes/routes');
+const expressValidator = require('express-validator');
 mongoose.Promise = global.Promise;
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -17,6 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(expressValidator());
 
 mongoose.connect('mongodb://localhost:27017/greeting-app', {
    useNewUrlParser: true
